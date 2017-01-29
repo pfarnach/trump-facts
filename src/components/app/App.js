@@ -6,11 +6,8 @@ import shuffle from '../../utils/shuffle';
 import data from '../../data';
 
 const shuffledData = shuffle(data);
-const btnText = [
-  'next',
-  'more',
-  'uff...'
-];
+const btnText = ['next', 'uff', 'jeez'];
+const nextKeycodes = [13, 32, 39];
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +21,22 @@ class App extends Component {
       currentBtnIdx: 0
     };
   }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleNextKeyDown.bind(this));
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleNextKeyDown.bind(this));
+  }
+
+  // document keydown event to handle advancing cards
+  handleNextKeyDown(e) {
+    if (nextKeycodes.includes(e.keyCode)) {
+      this.handleNext();
+    }
+  }
+
 
   handleNext() {
     const { remainingQuotes, currentBtnIdx } = this.state;
@@ -64,6 +77,9 @@ class App extends Component {
             { btnText[currentBtnIdx % btnText.length] }
           </button>
         </div>
+        <footer>
+          <a href="mailto:letsjustgivehimachance@gmail.com" target="_top">contribute</a>
+        </footer>
       </div>
     );
   }
