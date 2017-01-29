@@ -32,6 +32,8 @@ class App extends Component {
 
   // document keydown event to handle advancing cards
   handleNextKeyDown(e) {
+    e.preventDefault();
+
     if (nextKeycodes.includes(e.keyCode)) {
       this.handleNext();
     }
@@ -78,7 +80,7 @@ class App extends Component {
           </button>
         </div>
         <footer>
-          <a href="mailto:letsjustgivehimachance@gmail.com" target="_top">contribute</a>
+          <a href="mailto:letsjustgivehimachance@gmail.com" target="_top">[contribute]</a>
         </footer>
       </div>
     );
