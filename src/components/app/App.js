@@ -32,9 +32,8 @@ class App extends Component {
 
   // document keydown event to handle advancing cards
   handleNextKeyDown(e) {
-    e.preventDefault();
-
     if (nextKeycodes.includes(e.keyCode)) {
+      e.preventDefault();
       this.handleNext();
     }
   }
